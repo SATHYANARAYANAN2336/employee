@@ -1,0 +1,20 @@
+.nav-tabs .nav-item.show , {
+    color: Black;
+    background-color: #11cdef;
+    border-color: #ddd #ddd #fff;
+}
+ .nav-link.active {
+    color: black;
+    background-color: #11cdef;
+    border-color: #ddd #ddd #fff;
+}
+
+.nav-link {
+    color: black;
+    background-color: #11cdef;
+    border-color: #ddd #ddd #fff;
+}
+
+.a {
+    color: blue;
+}

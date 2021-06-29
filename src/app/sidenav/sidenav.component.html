@@ -1,0 +1,17 @@
+<mat-sidenav-container >
+      <mat-sidenav opened #sidenav>
+      <mat-nav-list style="font-size: x-large;">
+                
+        <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <ng-container *ngFor="let side of sidelist" >
+          <a *ngIf="!side.hide" mat-list-item [routerLink]="side.url"> {{side.name}}</a>
+        </ng-container>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  

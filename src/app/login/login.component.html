@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+ <div class="card">
+  <form autocomplete="off" (ngSubmit)="login()">
+  <img class="card-img-top" src="/assets/new1.png" alt="Card image" style="width: 75%;margin-left: 17%;">
+  <div class="card-img-overlay" style="margin-left: 66%;margin-top: 14%;">
+    <h3 class="card-title">Now you can Login</h3>
+    <br>
+    <div class="col-md-8">      
+      <div class="row">
+        <div class="d-grid gap-2 col-10 mx-auto">
+          <label for="validationCustom01" class="form-label">Username</label>
+          <input type="email" name="login" [(ngModel)]="email" class="form-control is valid" id="validationCustom01" placeholder ="your mail" required>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="d-grid gap-2 col-10 mx-auto">
+          <label for="inputPassword" class="form-label">Password</label>
+          <input type="password" name="login" [(ngModel)]="password" class="form-control" id="inputPassword" placeholder="your password" required>
+          </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="d-grid gap-2 mx-auto">
+          <button type="submit" class="btn btn-primary" (click)="login()">Login </button> &nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp; &nbsp;&nbsp; &nbsp;<button class="btn btn-primary" (click)="onLogout()">Logout</button>
+          <div class="form-group">
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+            {{errorMessage}}</p>
+        
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+              {{errorMessage}}</p>
+            </div>
+          <br>
+          <div class="registration"><a href="#" routerLink="/registration"><b>New User Registration</b></a></div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+  
+
+
+
+
+
+</body>
+</html>
+
+
+
+
