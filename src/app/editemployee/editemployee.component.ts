@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from './../service/crud.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -9,18 +9,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./editemployee.component.css']
 })
 export class EditemployeeComponent implements OnInit {
- id: any
- record: any
+ id: any;
+ record: any={};
 
-  constructor(public crud:CrudService,private route:ActivatedRoute,private AngularFirestore:AngularFirestore,) 
-  {console.log(this.route.snapshot.params.id)
-    this.id=this.route.snapshot.params.id
-    
-  this.AngularFirestore.collection("Employee").doc(this.id).get().toPromise().then((doc) => {
-    this.record=doc.data()
-    console.log(doc.data())
-  })
-  console.log(this.record)
+  constructor(public crud:CrudService,private route:ActivatedRoute,private AngularFirestore:AngularFirestore,private router:Router) 
+  {
   }
 
   update()
@@ -30,8 +23,9 @@ export class EditemployeeComponent implements OnInit {
   this.crud.update(this.record.id,this.record).then((_res: any) =>{
 
     
-    console.log(_res);
+    // console.log(_res);
     alert("Employee data save done");
+    this.router.navigateByUrl("/adm/employeelist");
   }).catch((error: any) => {
     console.log(error);
   });
@@ -42,6 +36,14 @@ export class EditemployeeComponent implements OnInit {
   
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.params.id);
+    this.id=this.route.snapshot.params.id;
+    this.AngularFirestore.collection("Employee").doc(this.id).get().toPromise().then((result) => {
+    this.record=result.data();
+    console.log(this.record.employeeid);
+    // console.log(doc.data());
+  });
+  
   }
 
 }

@@ -16,7 +16,7 @@ export class EmployeeListComponent implements OnInit {
    @ViewChild(MatPaginator) paginator!: MatPaginator;
    @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColumns: string[] = ['employeename','designation','email','mobile','edit','delete'];
+  displayedColumns: string[] = ['employeename','designation','email','mobile','edit','view','delete'];
   dataSource: any;
   employeelist:any;
 
@@ -43,16 +43,25 @@ export class EmployeeListComponent implements OnInit {
     console.log(id);
     this.router.navigateByUrl(`/edit/${id}`)
       
-    
-      
    }
-   
-  
-  onrowdelete(id: any){
+
+   onrowview(id:any){
+     console.log(id);
+     this.router.navigateByUrl(`/view/${id}`)
+     
+   }
+
+
+   onrowdelete(id: any){
     if(confirm("Are you sure to delete this record")){
       this.angularFirestore.doc('Employee/'+id).delete();
     }
     }
+
+   
+   
+  
+  
  
  
 

@@ -42,6 +42,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
+import { ViewemployeeComponent } from './viewemployee/viewemployee.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { UserinfoComponent } from './userinfo/userinfo.component';
     EmployeeListComponent,
     EditemployeeComponent,
     UserinfoComponent,
+    ViewemployeeComponent,
    
   ],
   imports: [
@@ -89,6 +92,7 @@ import { UserinfoComponent } from './userinfo/userinfo.component';
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
+    GoogleChartsModule,
     
     ],
   exports: [SidenavComponent],

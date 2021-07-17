@@ -9,8 +9,10 @@ import {AuthService} from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   
+  passType: string = 'password';
 
   email="";
+  confirmpassword="";
   password="";
   errorMessage ='';
   error:{name:string,message:string}={name:'',message: ''};
@@ -26,6 +28,9 @@ export class LoginComponent implements OnInit {
     this.error = {name:'', message:''};
   }
 
+  
+
+
 
   login()
   {
@@ -33,13 +38,21 @@ export class LoginComponent implements OnInit {
     if (this.validateForm(this.email,this.password)){
         this.authservice.loginWithEmail(this.email, this.password)
         .then(() => {
-          this.router.navigate(['/adm'])
+          this.router.navigate(['/adm/employeelist'])
         }).catch((_error: { name: string; message: string; }) =>{
           this.error=_error
           this.router.navigate(['/login'])
         })
     }
   }
+
+  changePasswordType(){
+    if(this.passType== 'password'){
+    this.passType= 'text'
+    }else{
+    this.passType= 'password'
+    }
+    }
   
   validateForm(email: string, password: string):Boolean
   {

@@ -15,39 +15,39 @@ export class AuthService {
   
  //all firebase getdata functions
 
-  get isUserAnonymousLoggedIn():boolean {
-    return(this.authState!=null) ? this.authState.isAnonymous:false 
-  }
+//   get isUserAnonymousLoggedIn():boolean {
+//     return(this.authState!=null) ? this.authState.isAnonymous:false 
+//   }
 
-  get currentUserId():string {
-    return(this.authState !==null) ? this.authState.uid:''
-} 
+//   get currentUserId():string {
+//     return(this.authState !==null) ? this.authState.uid:''
+// } 
 
-  get currentUserName():string {
-    return this.authState['email']
-  } 
+//   get currentUserName():string {
+//     return this.authState['email']
+//   } 
   
-  get currentUser(): any{
-    return (this.authState !==null) ? this.authState : null;
-  }
+//   get currentUser(): any{
+//     return (this.authState !==null) ? this.authState : null;
+//   }
   
-  get isUserEmailLoggedIn(): boolean{
-    if((this.authState!==null) && (this.isUserAnonymousLoggedIn)){
-      return true
-    } else {
-      return false
-    }
-  }
+//   get isUserEmailLoggedIn(): boolean{
+//     if((this.authState!==null) && (this.isUserAnonymousLoggedIn)){
+//       return true
+//     } else {
+//       return false
+//     }
+//   }
 
   
   
-  async registrationWithEmail(email:string, password:string) {
-      return this.afu.createUserWithEmailAndPassword(email, password)
+  async registrationWithEmail(email:string, confirmpassword:string) {
+      return this.afu.createUserWithEmailAndPassword(email, confirmpassword)
       .then((user) => {
       this.authState = user
       })
      .catch (error => {
-      console.log(error)
+      // console.log(error)
       throw error
     });
   }

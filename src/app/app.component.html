@@ -1,6 +1,6 @@
 
 
-<html>
+<!-- <html>
     <head >
      <title>Employee</title>
      <link rel="stylesheet" href="app.component.css">
@@ -18,14 +18,33 @@
        </ul>
       </div>
     </body>
-  </html>
+  </html> -->
   
-  <router-outlet>
+    <router-outlet>
     
-  </router-outlet>
+  </router-outlet> 
   
   
-  
+
+   <!-- <mat-sidenav-container >
+    <mat-sidenav opened #sidenav mode="side">
+    <mat-nav-list style="font-size: x-large;">
+              
+      
+      <ng-container *ngFor="let side of sidelist" >
+        <a *ngIf="!side.hide" mat-list-item [routerLink]="side.url"> {{side.name}}</a>
+      </ng-container>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 100vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>  -->
+
+
   
   
   

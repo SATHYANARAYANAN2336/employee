@@ -1,7 +1,7 @@
 
 
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: "AIzaSyCNnlq7vSWq4IQNXzDBWUSwhUNhJBK5SVg",
     authDomain: "hr-software-adf8e.firebaseapp.com",

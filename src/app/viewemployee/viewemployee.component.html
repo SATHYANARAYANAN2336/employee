@@ -1,12 +1,11 @@
-
-<h1>Employee Data</h1>
+<h1>Employee Details</h1>
 
 <ul class="nav nav-tabs" > 
-  <li class="nav-item"><a class="nav-link active" data-toggle="tab" role="button" id="empdata" (click)="div1Function()">Employee data</a></li>
+  <li class="nav-item"><a class="nav-link active" data-toggle="tab" role="button" id="empdata" >Employee data</a></li>
 </ul>
 
 
-<div *ngIf="empdata" id="empdata" class="tab-pane fade in active show">
+<div  id="empdata" class="tab-pane fade in active show">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -17,26 +16,26 @@
    </thead>
     <tr>
      <td>Employee ID</td>
-     <td><input type="text" required #employeeid="ngModel" class="form-control" [(ngModel)]="record.employeeid" placeholder="Employee ID">
+     <td><input disabled required #employeeid="ngModel" class="form-control" [(ngModel)]="record.employeeid" placeholder="Employee ID">
       <small class="text-danger" [class.d-none]="employeeid.valid || employeeid.untouched">Employee Id is required</small></td>
       <td>Reporting To</td>
-     <td><input type="text" required #reporting="ngModel" class="form-control" [(ngModel)]="record.reporting" placeholder="Reporting To">
+     <td><input readonly required #reporting="ngModel" class="form-control" [(ngModel)]="record.reporting" placeholder="Reporting To">
       <small class="text-danger" [class.d-none]="reporting.valid || reporting.untouched">Reporting To is required</small></td>
      </tr>
      <tr>
       <td>Employee Name </td>
-      <td><input type="text" required #employeename="ngModel" class="form-control" [(ngModel)]="record.employeename" placeholder="Employee Name">
+      <td><input readonly required #employeename="ngModel" class="form-control" [(ngModel)]="record.employeename" placeholder="Employee Name">
         <small class="text-danger" [class.d-none]="employeename.valid || employeename.untouched">Employee Name To is required</small></td>
       <td>Date of Birth</td>
       <td><form action="/action_page.php">
-      <input type="date" required #dob="ngModel" class="form-control" [(ngModel)]="record.dob" name="dob">
-      <small class="text-danger" [class.d-none]="dob.valid || dob.untouched">Employee Name To is required</small></form><td>
-      </tr>
+        <input readonly required #dob="ngModel" type="date" class="form-control" [(ngModel)]="record.dob" name="dob">
+        <small class="text-danger" [class.d-none]="dob.valid || dob.untouched">Employee Name To is required</small>
+        </form></tr>
       <tr>
       <td>Company</td>
       <td><div class="form-row align-items-center">
         <div class="col-auto my-1">
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #company="ngModel" [(ngModel)]="record.company">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #company="ngModel" [(ngModel)]="record.company" disabled>
             <option value="A&H">A&H</option>
             <option value="SOE">SOE</option>            
           </select>
@@ -46,7 +45,7 @@
       <td>Work type</td>
       <td><div class="form-row align-items-center">
         <div class="col-auto my-1">
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #worktype="ngModel" [(ngModel)]="record.worktype">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #worktype="ngModel" [(ngModel)]="record.worktype" disabled>
            
             <option value="Permanent">Permanent</option>
             <option value="Contract">Contract</option>
@@ -61,7 +60,7 @@
       </tr>
       <tr>
       <td>Department</td>
-      <td><input type="text" required #department="ngModel" class="form-control" [(ngModel)]="record.department" placeholder="Department">
+      <td><input readonly required #department="ngModel" class="form-control" [(ngModel)]="record.department" placeholder="Department">
         <small class="text-danger" [class.d-none]="department.valid || department.untouched">Department is required</small></td>
       <td>Gender</td>
       <div class="container">
@@ -71,12 +70,12 @@
       </tr>
       <tr>
       <td>Designation</td>
-      <td><input type="text" required #designation="ngModel" class="form-control" [(ngModel)]="record.designation" placeholder="Designation">
+      <td><input readonly required #designation="ngModel" class="form-control" [(ngModel)]="record.designation" placeholder="Designation">
         <small class="text-danger" [class.d-none]="designation.valid || designation.untouched">Designation is required</small></td>
       <td>Blood Group</td>
       <td><div class="form-row align-items-center">
         <div class="col-auto my-1">
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #bloodgroup="ngModel" [(ngModel)]="record.bloodgroup">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required #bloodgroup="ngModel" [(ngModel)]="record.bloodgroup" disabled>
            
             <option value="A+ve">A+ve</option>
             <option value="A-ve">A-ve</option>
@@ -87,25 +86,25 @@
             <option value="O+ve">O+ve</option>
             <option value="O-ve">O-ve</option>
           </select>
-          <small class="text-danger" [class.d-none]="bloodgroup.valid || bloodgroup.untouched">Bloodgroup is required</small>
+          <small class="text-danger" [class.d-none]="bloodgroup.invalid || bloodgroup.untouched">Bloodgroup is required</small>
         </div>
       </div></td></tr>
       <tr>
       <td>Email(Official)</td>
-      <td><input type="text" required #email="ngModel" class="form-control" [(ngModel)]="record.email" placeholder="Email(Official)">
+      <td><input readonly required #email="ngModel" class="form-control" [(ngModel)]="record.email" placeholder="Email(Official)">
         <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small></td>
         <td>Mobile</td>
-        <td><input type="text" #phone="ngModel" pattern="^\d{10}$" required class="form-control" [(ngModel)]="record.mobile" placeholder="Mobile">
+        <td><input readonly #phone="ngModel" pattern="^\d{10}$" required class="form-control" [(ngModel)]="record.mobile" placeholder="Mobile">
         <small class="text-danger" [class.is-invalid]="phone.invalid && phone.touched" [class.d-none]="phone.valid || phone.untouched">Mobile number is required must be 10 Digit</small>
         </td>
       </tr>
       <tr>
         <td>Permanent Address</td>
       <td>
-        <textarea required #address="ngModel" class="form-control" [(ngModel)]="record.address" id="exampleFormControlTextarea1" placeholder="Permanent Address"rows="4"></textarea>
+        <textarea readonly required #address="ngModel" class="form-control" [(ngModel)]="record.address" id="exampleFormControlTextarea1" placeholder="Permanent Address"rows="4"></textarea>
         <small class="text-danger" [class.d-none]="address.valid || address.untouched">Permanent Address is required</small></td>
       <td>Temporary Address</td>
-        <td><textarea required #tempaddress="ngModel" class="form-control" [(ngModel)]="record.tempaddress" id="exampleFormControlTextarea1" placeholder="Temporary Address"rows="4"></textarea>
+        <td><textarea readonly required #tempaddress="ngModel" class="form-control" [(ngModel)]="record.tempaddress" id="exampleFormControlTextarea1" placeholder="Temporary Address"rows="4"></textarea>
           <small class="text-danger" [class.d-none]="tempaddress.valid || tempaddress.untouched">Temporary Address is required</small></td>
         </tr>
 
@@ -126,36 +125,35 @@
        </thead>
        <tr>
         <td>Employee Grade</td>
-        <td><input type="text" required #employeegrade="ngModel" class="form-control" [(ngModel)]="record.employeegrade" placeholder="Employee Grade">
+        <td><input readonly required #employeegrade="ngModel" class="form-control" [(ngModel)]="record.employeegrade" placeholder="Employee Grade">
          <small class="text-danger" [class.d-none]="employeegrade.valid || employeegrade.untouched">Employee Grade is required</small></td>
          <td>Date of Joining</td>
-        <td><form action="/action_page.php">
-      <input type="date" required #dateofjoin="ngModel" class="form-control" [(ngModel)]="record.dateofjoin" name="dateofjoin">
-      <small class="text-danger" [class.d-none]="dateofjoin.valid || dateofjoin.untouched">Date of Joining To is required</small></form><td></tr>
+         <td><form action="/action_page.php">
+          <input readonly required #dateofjoin="ngModel" type="date" class="form-control" [(ngModel)]="record.dateofjoin" name="dateofjoin">
+          <small class="text-danger" [class.d-none]="dateofjoin.valid || dateofjoin.untouched">Date of Joining To is required</small></form><td>
+            </tr>
         <tr>
           <td>Insurance</td>
-          <td><input type="text" required #insurance="ngModel" class="form-control" [(ngModel)]="record.insurance" placeholder="Insurance">
+          <td><input readonly required #insurance="ngModel" class="form-control" [(ngModel)]="record.insurance" placeholder="Insurance">
            <small class="text-danger" [class.d-none]="insurance.valid || insurance.untouched">Insurance is required</small></td>
-           <td>ESI No</td>
-          <td><input type="text" required #esi="ngModel" class="form-control" [(ngModel)]="record.esi" placeholder="ESI No">
+           <td>Esino</td>
+          <td><input readonly required #esi="ngModel" class="form-control" [(ngModel)]="record.esi" placeholder="Esino">
            <small class="text-danger" [class.d-none]="esi.valid || esi.untouched">Esino To is required</small></td>
           </tr>
           <tr>
             <td>PF A/C No</td>
-            <td><input type="text" required #pf="ngModel" class="form-control" [(ngModel)]="record.pf" placeholder="PF A/C No">
+            <td><input readonly required #pf="ngModel" class="form-control" [(ngModel)]="record.pf" placeholder="PF A/C No">
              <small class="text-danger" [class.d-none]="pf.valid || pf.untouched">PF A/C No is required</small></td>
              <td>Resignation date</td>
              <td><form action="/action_page.php">
-              <input type="date" required #resignation="ngModel" class="form-control" [(ngModel)]="record.resignation" name="resignation">
+              <input readonly required #resignation="ngModel" class="form-control" [(ngModel)]="record.resignation" name="resignation">
               <small class="text-danger" [class.d-none]="resignation.valid || resignation.untouched">Resignation is required</small></form></td>
                 </tr>
             <tr>
               <td>Date of Exit</td>
               <td><form action="/action_page.php">
-                <input type="date" required #doe="ngModel" class="form-control" [(ngModel)]="record.doe" name="doe">
-                <small class="text-danger" [class.d-none]="doe.valid || doe.untouched">Date of Exit is required</small></form></td>
-                      
-              </tr>
+                <input readonly required #doe="ngModel" class="form-control" [(ngModel)]="record.doe" name="doe">
+                <small class="text-danger" [class.d-none]="doe.valid || doe.untouched">Date of Exit is required</small></form></td></tr>
   
 
   
@@ -168,24 +166,24 @@
        </thead>
        <tr>
         <td>Bank Name</td>
-        <td><input type="text" required #bankname="ngModel" class="form-control" [(ngModel)]="record.bankname" placeholder="Bank Name">
+        <td><input readonly required #bankname="ngModel" class="form-control" [(ngModel)]="record.bankname" placeholder="Bank Name">
          <small class="text-danger" [class.d-none]="bankname.valid || bankname.untouched">Bank Name is required</small></td>
          <td>Account Name</td>
-         <td><input type="text" required #accountname="ngModel" class="form-control" [(ngModel)]="record.accountname" placeholder="Account Name">
+         <td><input readonly required #accountname="ngModel" class="form-control" [(ngModel)]="record.accountname" placeholder="Account Name">
            <small class="text-danger" [class.d-none]="accountname.valid || accountname.untouched">Account Name is required</small></td>
         </tr>
        
        <tr>
         <td>IFSC Code</td>
-        <td><input type="text" required #ifsc="ngModel" class="form-control" [(ngModel)]="record.ifsc" placeholder="IFSC Code">
+        <td><input readonly required #ifsc="ngModel" class="form-control" [(ngModel)]="record.ifsc" placeholder="IFSC Code">
           <small class="text-danger" [class.d-none]="ifsc.valid || ifsc.untouched">IFSC Code is required</small></td>
           <td>Payment Type</td>
-          <td><input type="text" required #paymenttype="ngModel" class="form-control" [(ngModel)]="record.paymenttype" placeholder="Payment Type">
+          <td><input readonly required #paymenttype="ngModel" class="form-control" [(ngModel)]="record.paymenttype" placeholder="Payment Type">
             <small class="text-danger" [class.d-none]="paymenttype.valid || paymenttype.untouched">Payment Type is required</small></td>
        </tr>
        <tr>
         <td>PAN Number</td>
-        <td><input type="text" required #pan="ngModel" class="form-control" [(ngModel)]="record.pan" placeholder="Pan Number">
+        <td><input readonly required #pan="ngModel" class="form-control" [(ngModel)]="record.pan" placeholder="Pan Number">
           <small class="text-danger" [class.d-none]="pan.valid || pan.untouched">PAN number is required</small></td>
           <td></td>
           <td></td>
@@ -202,61 +200,39 @@
        </thead> 
         <tr>
          <td>Emergency Contact Name</td>
-         <td><input type="text" required #emergencycontactname="ngModel" class="form-control" name="emergency contact name" [(ngModel)]="record.emergencycontactname" placeholder="Emergency Contact Name">
+         <td><input readonly required #emergencycontactname="ngModel" class="form-control" name="emergency contact name" [(ngModel)]="record.emergencycontactname" placeholder="Emergency Contact Name">
           <small class="text-danger" [class.d-none]="emergencycontactname.valid || emergencycontactname.untouched">Emergency Contact Name is required</small></td>
          <td>Emergency Contact Email</td>
-         <td><input type="text" required #emergencycontactemail="ngModel" class="form-control" name="emergency contact email" [(ngModel)]="record.emergencycontactemail" placeholder="Emergency Contact Email">
+         <td><input readonly required #emergencycontactemail="ngModel" class="form-control" name="emergency contact email" [(ngModel)]="record.emergencycontactemail" placeholder="Emergency Contact Email">
           <small class="text-danger" [class.d-none]="emergencycontactemail.valid || emergencycontactemail.untouched">Emergency Contact Email is required</small></td>
          </tr>
          <tr>
           <td>Emergency Contact Mobile </td>
-          <td><input type="text" required #phone1="ngModel" pattern="^\d{10}$" class="form-control" name="emergency contact mobile" [(ngModel)]="record.emergencycontactmobile" placeholder="Emergency Contact Mobile">
+          <td><input readonly required #phone1="ngModel" pattern="^\d{10}$" class="form-control" name="emergency contact mobile" [(ngModel)]="record.emergencycontactmobile" placeholder="Emergency Contact Mobile">
             <small class="text-danger" [class.is-invalid]="phone1.invalid && phone1.touched" [class.d-none]="phone1.valid || phone1.untouched">Emergency Contact Mobile number is required must be 10 Digit</small></td>
             <td>Relationship</td>
-            <td><input type="text" required #relationship="ngModel" class="form-control" name="relationship" [(ngModel)]="record.relationship" placeholder="Relationship">
+            <td><input readonly required #relationship="ngModel" class="form-control" name="relationship" [(ngModel)]="record.relationship" placeholder="Relationship">
               <small class="text-danger" [class.d-none]="relationship.valid || relationship.untouched">Relationship is required</small></td>
           </tr>
           <tr>
             <td>Emergency Contact Address</td>
           <td>
-            <textarea required #emergencycontactaddress="ngModel" class="form-control" name="emergency contact address" [(ngModel)]="record.emergencycontactaddress" placeholder="Emergency Contact Address" id="exampleFormControlTextarea1" rows="5"></textarea>
-            <small  class="text-danger" [class.d-none]="emergencycontactaddress.valid || emergencycontactaddress.untouched">Emergency Contact Address is required</small></td>
+            <textarea readonly required #emergencycontactaddress="ngModel" class="form-control" name="emergency contact address" [(ngModel)]="record.emergencycontactaddress" placeholder="Emergency Contact Address" id="exampleFormControlTextarea1" rows="5"></textarea>
+            <small class="text-danger" [class.d-none]="emergencycontactaddress.valid || emergencycontactaddress.untouched">Emergency Contact Address is required</small></td>
           </tr>
-        </table>
-<!-- {{emergencycontactaddress.untouched | json}}
-           -->
-         
-         <table>
-          <tr> 
-            <div class="row">
-              <div class="d-grid gap-2 mx-auto">
-                <button style="margin-left: 300%;margin-top:4%;" type="submit" class="btn btn-danger"  (click)="back()">Cancel </button>  
-                </div> 
-
-                <button style="margin-right: -400%;margin-top:4%;" type="submit" class="btn btn-primary" [disabled]="!record.employeeid || !record.reporting ||!record.employeename ||!record.dob ||!record.company
-                ||!record.worktype||!record.department ||!record.gender ||!record.designation ||!record.bloodgroup ||!record.email ||!record.mobile ||!record.address ||!record.tempaddress ||!record.employeegrade ||!record.dateofjoin ||!record.insurance ||!record.esi ||!record.pf 
-                ||!record.bankname ||!record.accountname ||!record.ifsc ||!record.paymenttype ||!record.pan ||!record.emergencycontactname ||!record.emergencycontactemail 
-                ||!record.emergencycontactmobile ||!record.emergencycontactaddress || !record.relationship ||!record.emergencycontactaddress" (click)="createrecord()">Submit </button> 
-               </div>
-                <br>
-                <br>
-                <br>
-          
-               
-          </tr>
-         </table> 
-        
+          </table>
+          <table>
+            <tr> 
+              <div class="row">
+                <div class="d-grid gap-2 mx-auto">
+                  <button style="margin-left: 1300%;margin-top:4%;" type="submit" class="btn btn-danger" (click)="back()">Back </button>  
+                  </div> 
+                  </div>
+                  </tr>
+                  </table>
   
-  <div>
-    {{message}}
-  </div>
 
-
-       
-
-
-
-
-
-    <router-outlet>  </router-outlet>
+</div>
  
+
+<router-outlet>  </router-outlet>

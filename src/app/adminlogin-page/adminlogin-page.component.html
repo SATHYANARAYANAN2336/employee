@@ -1,4 +1,41 @@
 
-<app-sidenav>
-   
-</app-sidenav>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-sidenav>
+
+  </app-sidenav></mat-drawer>
+  <!-- <mat-drawer-content>Main content</mat-drawer-content> -->
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+<!-- <router-outlet></router-outlet>  -->
+<!-- <h1>Admin</h1>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-action-list>
+                <mat-list-item [routerLink]="['employeedetails']">EmployeedetailComponent</mat-list-item>
+                <mat-list-item [routerLink]="['employeelist']">EmployeeListComponent</mat-list-item>
+        </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<!-- <mat-sidenav-container >
+    <mat-sidenav opened #sidenav mode="side">
+    <mat-nav-list style="font-size: x-large;">
+      
+              
+      
+      <ng-container *ngFor="let side of sidelist" >
+        <a *ngIf="!side.hide" mat-list-item [routerLink]="side.url"> {{side.name}}</a>
+      </ng-container>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 100vh;">
+    <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->

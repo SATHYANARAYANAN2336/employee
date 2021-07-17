@@ -13,26 +13,25 @@ import { AdminloginPageComponent } from './adminlogin-page/adminlogin-page.compo
 import { TLloginPageComponent} from './tllogin-page/tllogin-page.component';
 import { DeveloperloginPageComponent } from './developerlogin-page/developerlogin-page.component';
 import { DashboardComponent } from'./pages/dashboard/dashboard.component';
+
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { LeavesComponent } from './pages/leaves/leaves.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
+import { ViewemployeeComponent } from './viewemployee/viewemployee.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 
 
 const routes: Routes = [
   {
-    path:'login',
+    path:'',
     component:LoginComponent
   },
   {
     path:'registration',
     component:RegistrationComponent
-  },
-  {
-    path:'home',
-    component:HomeComponent
   },
   {
     path:'tllogin',
@@ -44,7 +43,18 @@ const routes: Routes = [
   },
   {
     path: 'adm',
-    component:AdminloginPageComponent
+    component:SidenavComponent,children:[  {
+      path:'employeedetails',
+      component: EmployeedetailComponent,
+    },
+    {
+      path:'dashboard',
+      component: DashboardComponent,
+    },
+    {
+      path:'employeelist',
+      component:EmployeeListComponent
+    },  ]
   },
   {
     path:'dlm',
@@ -66,22 +76,13 @@ const routes: Routes = [
     path:'adminleaves',
     component: LeavesComponent
   },
-  {
-    path:'adminmyprofile',
-    component: MyprofileComponent
-  },
-  {
-    path:'employeedetails',
-    component: EmployeedetailComponent,
-  },
+  
+
   {
     path:'clientdetails',
     component: ClientdetailComponent
   },
-  {
-    path:'employeelist',
-    component:EmployeeListComponent
-  },  
+  
   {
     path:'',
     redirectTo:'/home',
@@ -96,13 +97,19 @@ const routes: Routes = [
     component:EmployeedetailComponent
   },
   {
-    path:'cancel',
-    component:HomeComponent
-  },
-  {
     path:'userinfo',
     component:UserinfoComponent
-  }
+  },
+  {
+    path: 'cancel',
+    component:AdminloginPageComponent
+  },
+  {
+    path:'view/:id',
+    component:ViewemployeeComponent
+  },
+
+  
   
   
   

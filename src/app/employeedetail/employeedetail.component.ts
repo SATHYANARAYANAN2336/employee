@@ -17,8 +17,8 @@ export class EmployeedetailComponent implements OnInit {
   [x: string]: any;
    record={employeeid:"",employeename:"",reporting:"",dob:"",company:"",department:"",
   designation:"",bloodgroup:"",email:"",address:"",mobile:"",employeetype:"",gender:"",
-  bankname:"",employeegrade:"",accountname:"",insurance:"",ifsc:"",pf:"",pan:"",
-  paymenttype:"",esi:"",leaving:"",emergencycontactname:"",emergencycontactmobile:"",
+  bankname:"",employeegrade:"",accountname:"",insurance:"",ifsc:"",pf:"",pan:"",dateofjoin:"",tempaddress:"",doe:"",
+  paymenttype:"",esi:"",resignation:"",emergencycontactname:"",emergencycontactmobile:"",relationship:"",
   emergencycontactemail:"",emergencycontactaddress:"",id:"",worktype:""}
   
 
@@ -40,12 +40,26 @@ export class EmployeedetailComponent implements OnInit {
 
       
       console.log(_res);
+      window.location.reload()
       alert("Employee data save done");
+      // this.router.navigateByUrl("/adm/employeedetails");
+      // this.record={employeeid:"",employeename:"",reporting:"",dob:"",company:"",department:"",
+      // designation:"",bloodgroup:"",email:"",address:"",mobile:"",employeetype:"",gender:"",
+      // bankname:"",employeegrade:"",accountname:"",insurance:"",ifsc:"",pf:"",pan:"",dateofjoin:"",tempaddress:"",doe:"",
+      // paymenttype:"",esi:"",resignation:"",emergencycontactname:"",emergencycontactmobile:"",relationship:"",
+      // emergencycontactemail:"",emergencycontactaddress:"",id:"",worktype:""};
+       
     }).catch((error: any) => {
       console.log(error);
     });
+
+    
   
   }
+  back()
+    {
+      this.router.navigateByUrl("/adm/employeelist");
+    }
 
   
 
@@ -67,3 +81,7 @@ export class EmployeedetailComponent implements OnInit {
   
 
 }
+function back() {
+  throw new Error('Function not implemented.');
+}
+

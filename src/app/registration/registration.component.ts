@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -10,18 +11,38 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class RegistrationComponent implements OnInit {
   [x: string]: any;
-
+  pass_msg: any;
+  match_msg: any;
   email="";
+  item:any;
   password="";
+  confirmpassword="";
+  array:any = [];
+  match_valid:Boolean=false;
+  password_valid:Boolean=false;
   mobile="";
   message!: '';
   errorMessage ='';
   error:{name:string,message:string}={name:'',message: ''};
 
-  constructor(private router:Router,private authservice:AuthService,private db:AngularFirestore) { }
-
+  constructor(private router:Router,private authservice:AuthService,private db:AngularFirestore) { 
+    this.db.collection('Userdata').get().toPromise().then( snap => {
+      console.log(snap);
+      
+      snap.forEach( doc => {
+        console.log(doc.id);
+        
+        this.array.push(doc.data())
+      })
+    console.log(this.array);
+    
+      })
+      
+      }
   ngOnInit(): void {
+    // throw new Error('Method not implemented.');
   }
+    
 
   clearErrorMessage()
   {
@@ -32,21 +53,71 @@ export class RegistrationComponent implements OnInit {
   registration()
   {
     this.clearErrorMessage();
-    if(this.validateForm(this.email,this.password)){
-        this.authservice.registrationWithEmail(this.email, this.password)
+    if(this.validateForm(this.email,this.confirmpassword)){
+        this.authservice.registrationWithEmail(this.email, this.confirmpassword)
+        
         .then((_res: any) => {
           const userdata={name:this.name,email:this.email,mobile:this.mobile}
           let id=this.db.createId()
           this.db.collection('Userdata').doc(id).set(userdata);
           this.Message = "You are register with data on firebase"
           console.log(_res);
-      alert("Registration completed Successfully!!!");
+     
+      
         }).catch(_error =>{
           this.error=_error
-          this.router.navigate(['/registration'])
+          console.log(this.error);
+          this.router.navigate([''])
+           
         })
     
     }
+  }
+
+  
+
+  onChangeEvent(event: any){
+    let match=this.array.some((item: { email: any; }) =>
+      item.email===event.target.value)
+      console.log(match);
+
+    console.log(event.target.value);
+
+    if(match)
+    {
+      this.match_valid=true;
+      console.log();
+      
+      return this.match_msg="Already there is an existing account";
+    }
+    else
+    {
+      this.match_valid=false;
+      console.log();
+      return this.match_msg="create new account";
+    }
+
+  }
+
+  confpass(pass: any)
+  {
+    // console.log(pass);
+    // console.log(this.password);
+    // console.log(this.password===pass);
+
+    console.log(pass);
+    if(this.password===pass)
+    { 
+      this.password_valid=true;
+      return this.pass_msg = "Password Matched";   
+    }
+    else(this.password!==pass)
+    {
+      this.password_valid=false;
+      return this.pass_msg = "Password MisMatched"; 
+    }
+    alert("Registration completed Successfully!!!");
+
   }
 
   validateForm(email: string,password: string)
@@ -74,6 +145,9 @@ export class RegistrationComponent implements OnInit {
    
   onLogout()
   {
-    this.router.navigateByUrl("home");
+    this.router.navigateByUrl("");
   }
+
 }
+
+

@@ -1,0 +1,13 @@
+.form-control:disabled, .form-control[readonly] {
+    cursor:not-allowed;
+    color:#6c757d;
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.custom-select:disabled {
+    cursor:not-allowed;
+    color: #6c757d;
+    background-color: #e9ecef;
+    opacity:1;
+}
