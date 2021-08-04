@@ -8,6 +8,23 @@
 
 <div *ngIf="empdata" id="empdata" class="tab-pane fade in active show">
   <table class="table table-striped">
+
+    <thead>
+      <tr>
+      <th scope="colspan">
+       <h1> Image</h1>
+      </th>
+     </tr>
+     </thead>    
+     <tr>
+       <td>Employee Image</td>
+       <img [src]="url" height="200" width="200"> <br/>
+       <input type='file' accept="image/*"  (change)="onSelectFile($event)">
+
+     </tr>
+
+
+
     <thead>
     <tr>
     <th scope="colspan">
@@ -225,15 +242,19 @@
         </table>
 <!-- {{emergencycontactaddress.untouched | json}}
            -->
+
+          
+           
+
          
          <table>
           <tr> 
             <div class="row">
               <div class="d-grid gap-2 mx-auto">
-                <button style="margin-left: 300%;margin-top:4%;" type="submit" class="btn btn-danger"  (click)="back()">Cancel </button>  
+                <!-- <button style="margin-left: 300%;margin-top:4%;" type="submit" class="btn btn-danger"  (click)="back()">Cancel </button>   -->
                 </div> 
-
-                <button style="margin-right: -400%;margin-top:4%;" type="submit" class="btn btn-primary" [disabled]="!record.employeeid || !record.reporting ||!record.employeename ||!record.dob ||!record.company
+                
+                <button style="margin-right: -900%;margin-top:4%;" type="submit" class="btn btn-primary" [disabled]="!record.employeeid || !record.reporting ||!record.employeename ||!record.dob ||!record.company
                 ||!record.worktype||!record.department ||!record.gender ||!record.designation ||!record.bloodgroup ||!record.email ||!record.mobile ||!record.address ||!record.tempaddress ||!record.employeegrade ||!record.dateofjoin ||!record.insurance ||!record.esi ||!record.pf 
                 ||!record.bankname ||!record.accountname ||!record.ifsc ||!record.paymenttype ||!record.pan ||!record.emergencycontactname ||!record.emergencycontactemail 
                 ||!record.emergencycontactmobile ||!record.emergencycontactaddress || !record.relationship ||!record.emergencycontactaddress" (click)="createrecord()">Submit </button> 
@@ -241,6 +262,9 @@
                 <br>
                 <br>
                 <br>
+
+
+                
           
                
           </tr>

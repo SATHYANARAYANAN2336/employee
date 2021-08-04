@@ -16,11 +16,11 @@ import { DashboardComponent } from'./pages/dashboard/dashboard.component';
 
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { LeavesComponent } from './pages/leaves/leaves.component';
-import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { ViewemployeeComponent } from './viewemployee/viewemployee.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-
+import { MainComponent } from './main/main.component';
 
 
 
@@ -54,7 +54,20 @@ const routes: Routes = [
     {
       path:'employeelist',
       component:EmployeeListComponent
-    },  ]
+    },
+    {
+      path:'edit/:id',
+      component:EditemployeeComponent
+    },
+    {
+      path:'view/:id',
+      component:ViewemployeeComponent
+    },
+    {
+      path:'myprofile',
+      component:MyprofileComponent
+    }
+    ]
   },
   {
     path:'dlm',
@@ -88,10 +101,7 @@ const routes: Routes = [
     redirectTo:'/home',
     pathMatch:'full'
   },
-  {
-    path:'edit/:id',
-    component:EditemployeeComponent
-  },
+  
   {
     path:'back',
     component:EmployeedetailComponent
@@ -105,9 +115,10 @@ const routes: Routes = [
     component:AdminloginPageComponent
   },
   {
-    path:'view/:id',
-    component:ViewemployeeComponent
-  },
+    path:'main',
+    component:MainComponent
+  }
+  
 
   
   

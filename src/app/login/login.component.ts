@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../service/auth.service';
+import { AuthService } from '../service/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
   errorMessage ='';
   error:{name:string,message:string}={name:'',message: ''};
 
-  constructor(private router:Router,private authservice:AuthService) { }
+  constructor(private router:Router,private authservice:AuthService, private db:AngularFirestore) { }
 
   ngOnInit(): void {
   }
@@ -37,11 +40,77 @@ export class LoginComponent implements OnInit {
     this.clearErrorMessage();
     if (this.validateForm(this.email,this.password)){
         this.authservice.loginWithEmail(this.email, this.password)
-        .then(() => {
-          this.router.navigate(['/adm/employeelist'])
+        .then((result) => {
+          console.log(result.user.uid);
+          this.db.collection("Userdata", ref => ref.where("uid","==",result.user.uid)). //we used where query concept 
+          get().toPromise().then(data =>
+            {
+              console.log(data);
+
+              data.forEach(doc =>{
+                console.log("admin",doc.data()['admin']);
+                console.log("employee",doc.data()['employee']);
+                console.log("superadmin",doc.data()['superadmin']);
+
+                // if(doc.data()['admin']==true){
+                  
+                //   this.router.navigate(['/adm/employeelist']);
+                // }
+                // if(doc.data()['employee']==true){
+                  
+                //       this.router.navigate(['/adm/view/employeelist']);
+                //      }
+                // if(doc.data()['superadmin']==true){
+                  
+                //          this.router.navigate(['/adm/view/employeelist']);
+                //          }
+
+
+                
+                // if(doc.data()['admin']==false) {
+                    
+                //     alert("Not Authorized");
+                //     window.location.reload()
+                //     // this.router.navigate(['']);
+                // }                               
+              })
+
+              // data.forEach(doc1 =>{
+              //   console.log(doc1.data()['employee']);
+              //   if(doc1.data()['employee']==true){
+                  
+              //     this.router.navigate(['/adm/view/employeelist']);
+              //   }
+              //   if(doc1.data()['employee']==false) {
+                    
+              //       alert("Not Authorized");
+                    
+              //   }                               
+              // })
+
+
+              // data.forEach(doc1 =>{
+              //   console.log(doc1.data()['superadmin']);
+              //   if(doc1.data()['superadmin']==true){
+                  
+              //     this.router.navigate(['/adm/view/employeelist']);
+              //   }
+              //   if(doc1.data()['superadmin']==false) {
+                    
+              //       alert("Not Authorized");
+                    
+              //   }                               
+              // })
+              this.router.navigate(['/adm/employeelist'])
+              
+            } ) 
+            
+          // 
         }).catch((_error: { name: string; message: string; }) =>{
           this.error=_error
-          this.router.navigate(['/login'])
+         
+          // this.router.navigate([''])
+          
         })
     }
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {AuthService} from '../service/auth.service';
+import { AuthService } from '../service/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
@@ -9,10 +9,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent implements OnInit {
   [x: string]: any;
   pass_msg: any;
   match_msg: any;
+  uid="";
+  id="";
   email="";
   item:any;
   password="";
@@ -44,24 +47,21 @@ export class RegistrationComponent implements OnInit {
   }
     
 
-  clearErrorMessage()
-  {
-    this.errorMessage='';
-    this.error = {name:'', message:''};
-  }
-
+  
   registration()
   {
     this.clearErrorMessage();
     if(this.validateForm(this.email,this.confirmpassword)){
         this.authservice.registrationWithEmail(this.email, this.confirmpassword)
         
-        .then((_res: any) => {
-          const userdata={name:this.name,email:this.email,mobile:this.mobile}
+        .then((res) => {
+          console.log(res.user.uid);
+
           let id=this.db.createId()
+          const userdata={name:this.name,email:this.email,mobile:this.mobile,id:id,uid:res.user.uid}
+   
           this.db.collection('Userdata').doc(id).set(userdata);
-          this.Message = "You are register with data on firebase"
-          console.log(_res);
+       
      
       
         }).catch(_error =>{
@@ -119,6 +119,13 @@ export class RegistrationComponent implements OnInit {
     alert("Registration completed Successfully!!!");
 
   }
+
+  clearErrorMessage()
+  {
+    this.errorMessage='';
+    this.error = {name:'', message:''};
+  }
+
 
   validateForm(email: string,password: string)
   {

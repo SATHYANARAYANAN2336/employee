@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +22,7 @@ import { DeveloperLoginComponent } from './login/developer-login/developer-login
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { LeavesComponent } from './pages/leaves/leaves.component';
-import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DeveloperloginPageComponent } from './developerlogin-page/developerlogin-page.component';
@@ -34,6 +35,7 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomesComponent } from './homes/homes.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { CrudService } from './service/crud.service';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -44,6 +46,7 @@ import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { ViewemployeeComponent } from './viewemployee/viewemployee.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     EditemployeeComponent,
     UserinfoComponent,
     ViewemployeeComponent,
+    MainComponent,
    
   ],
   imports: [
@@ -81,6 +85,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -93,6 +98,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatPaginatorModule,
     MatDialogModule,
     GoogleChartsModule,
+    MatCheckboxModule,
     
     ],
   exports: [SidenavComponent],

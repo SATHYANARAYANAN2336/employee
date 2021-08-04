@@ -8,6 +8,16 @@
 
 <div  id="empdata" class="tab-pane fade in active show">
   <table class="table table-striped">
+
+    
+    <tr>
+      <td>Employee Image</td>
+      <img [src]="url" height="200" width="200"> 
+      <input type='file' accept="image/*"  (change)="onSelectFile($event)">
+
+
+    </tr>
+    
     <thead>
     <tr>
     <th scope="colspan">
@@ -221,20 +231,35 @@
             <textarea required #emergencycontactaddress="ngModel" class="form-control" name="emergency contact address" [(ngModel)]="record.emergencycontactaddress" placeholder="Emergency Contact Address" id="exampleFormControlTextarea1" rows="5"></textarea>
             <small class="text-danger" [class.d-none]="emergencycontactaddress.valid || emergencycontactaddress.untouched">Emergency Contact Address is required</small></td>
           </tr>
+
+
           </table>
+          <br>
+          <br>
+          
+         
         
           <table>
          <tr> 
           <div class="row" style="margin-right: -3500%;margin-top:4%;">
             <div class="d-grid gap-2 mx-auto">
               
-               <button type="submit" class="btn btn-primary"  (click)="update()">Save </button> 
+               <!-- <button type="submit" class="btn btn-primary"  (click)="back()">Back </button>  -->
               </div> 
              </div>
+              <br>
+             <div class="row" style="margin-right: -3000%;margin-top:4%;">
+              <div class="d-grid gap-2 mx-auto">
+                
+                 <button type="submit" class="btn btn-primary"  (click)="update()">Save </button> 
+                </div> 
+               </div>
+
              <td></td>
              <td></td>
     </tr>
   </table>
+  
   
 
 </div>

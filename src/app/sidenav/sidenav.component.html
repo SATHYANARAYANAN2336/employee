@@ -1,21 +1,73 @@
-
+<!-- 
 <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
 <mat-drawer-container >
        <mat-drawer mode="side" opened #sidenav>
-      <mat-action-list style="font-size: x-large;">
+       <mat-action-list style="font-size: x-large;">
 
         
                 
-        
-        <ng-container *ngFor="let side of sidelist" >
-          <a *ngIf="!side.hide" mat-list-item [routerLink]="side.url"> {{side.name}}</a>
+         
+        <ng-container >
+          <div *ngIf = "data[0].superadmin===true || data[0].admin===true ? true:false">
+            <a  mat-list-item routerLink="/adm/employeedetails">Add Employee Data </a>
+            </div>
+            </ng-container>
+
+            <ng-container>
+          <div *ngIf = "data[0].superadmin===true || data[0].admin===true  || data[0].employee===true ? true:false">
+          <a  mat-list-item routerLink="/adm/employeelist">Employee List </a>
+          </div>
+
         </ng-container>
-        <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
-      </mat-action-list>
+
+        <ng-container>
+          <div>
+                    <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
+
+          </div>
+        </ng-container>
+
+       </mat-action-list>
        </mat-drawer>
+       <mat-drawer-content>
+        
+          <router-outlet></router-outlet>
+          
+
+       </mat-drawer-content>
     
-      <div style="height: 100vh;">
-      <router-outlet></router-outlet>
+     
+  </mat-drawer-container>
+
+   -->
+
+   
+<mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+<mat-drawer-container>
+       <mat-drawer style="width: 200px;" mode="side" opened #sidenav>
+       <mat-action-list style="font-size: x-large;">
+     
+         
+        <ng-container >
+          <div *ngIf = "data[0].superadmin===true || data[0].admin===true ? true:false">
+            <a  mat-list-item routerLink="/adm/employeedetails">Add Employee Data </a>
+            </div>
+            </ng-container>
+
+            <ng-container>
+          <div *ngIf = "data[0].superadmin===true || data[0].admin===true  || data[0].employee===true ? true:false">
+          <a  mat-list-item routerLink="/adm/employeelist">Employee List </a>
+          </div>
+
+        </ng-container>
+
+       
+        <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>        
+
+       </mat-action-list>
+       </mat-drawer>
+       <div style="height: 100vh;">
+        <router-outlet></router-outlet> 
       </div>
   </mat-drawer-container>
 

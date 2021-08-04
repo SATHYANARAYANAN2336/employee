@@ -35,25 +35,24 @@
         <td mat-cell *matCellDef="let row"> {{row.mobile}} </td>
       </ng-container>
       
-
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef > Edit </th>
-        <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" type="button" (click)=onrowedit(row.id)>Edit</button> </td>
-      </ng-container>
-      
-      
-      
      
       <ng-container matColumnDef="view">
         <th mat-header-cell *matHeaderCellDef > View </th>
         <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" type="button" (click)=onrowview(row.id)>View</button> </td>
       </ng-container>
+
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef > Edit </th>
+        <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" type="button" (click)=onrowedit(row.id) [disabled]="data[0].employee===true ? true:false">Edit</button> </td>
+      </ng-container>
       
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef > Delete </th>
-        <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" type="button" (click)=onrowdelete(row.id)>Delete</button> </td>
-      </ng-container>
+        <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" type="button" (click)=onrowdelete(row.id) [disabled]=" data[0].superadmin===false ? true:false">Delete</button> </td> 
+      </ng-container>                                                                                                                         
+                                                                                                                             <!-- //[disabled]="data[0].employee===true || data[0].admin===true ? true:false -->
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -66,6 +65,8 @@
   
     <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
   </div>
+
+  
   
   
   
